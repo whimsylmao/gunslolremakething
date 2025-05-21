@@ -61,6 +61,7 @@
             opacity: 0.5;
             filter: grayscale(100%);
             z-index: 1; /* Ensure background is behind other container children */
+            pointer-events: none; /* Make the image non-interactive */
         }
 
         .overlay {
@@ -71,6 +72,7 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.3);
             z-index: 2; /* Overlay above background image */
+            pointer-events: none; /* Make the overlay non-interactive */
         }
 
         /* Content */
@@ -84,15 +86,20 @@
             height: 100vh;
             padding: 1rem;
             text-align: center;
+            pointer-events: none; /* Make the content non-interactive initially */
         }
 
-        /* Profile section */
         .profile {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 1rem;
             max-width: 400px;
+            pointer-events: auto; /* Make profile elements interactive */
+        }
+
+        .profile > * {
+            pointer-events: auto; /* Ensure children of profile are interactive */
         }
 
         .profile-image-container {
@@ -106,6 +113,7 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
+            pointer-events: none;
         }
 
         .profile-decoration {
@@ -115,11 +123,13 @@
             width: 128px;
             height: 128px;
             object-fit: contain;
+            pointer-events: none;
         }
 
         .uid {
             font-size: 0.875rem;
             color: #9ca3af;
+            pointer-events: none;
         }
 
         .username-container {
@@ -127,26 +137,31 @@
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
+            pointer-events: none;
         }
 
         .username {
             font-size: 1.875rem;
             font-weight: 700;
+            pointer-events: none;
         }
 
         .diamond {
             font-size: 1.5rem;
             color: #9ca3af;
+            pointer-events: none;
         }
 
         .badge {
             height: 24px;
+            pointer-events: none;
         }
 
         .tagline {
             font-size: 1.125rem;
             font-style: italic;
             letter-spacing: 0.05em;
+            pointer-events: none;
         }
 
         .tiktok {
@@ -156,6 +171,11 @@
             gap: 0.5rem;
             font-size: 0.875rem;
             margin-top: 0.5rem;
+            pointer-events: none;
+        }
+
+        .tiktok > * {
+            pointer-events: none;
         }
 
         .tiktok-image {
@@ -163,14 +183,17 @@
             height: 24px;
             border-radius: 50%;
             object-fit: cover;
+            pointer-events: none;
         }
 
         .dot {
             color: #ef4444;
+            pointer-events: none;
         }
 
         .shop {
             color: #9ca3af;
+            pointer-events: none;
         }
 
         /* Discord button */
@@ -179,6 +202,7 @@
             position: relative;
             display: inline-block;
             transition: transform 0.3s ease;
+            pointer-events: auto;
         }
 
         .discord-button:hover {
@@ -192,6 +216,7 @@
             background-color: rgba(255, 255, 255, 0.1);
             padding: 0.75rem;
             transition: background-color 0.3s ease;
+            pointer-events: none;
         }
 
         .discord-button:hover .discord-icon {
@@ -207,6 +232,11 @@
             font-size: 0.875rem;
             color: #9ca3af;
             margin-top: 1rem;
+            pointer-events: none;
+        }
+
+        .view-counter > * {
+            pointer-events: none;
         }
 
         /* Audio control */
@@ -226,6 +256,7 @@
             justify-content: center;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            pointer-events: auto;
         }
 
         .audio-control:hover {
@@ -320,8 +351,11 @@
         const discordLink = document.getElementById('discord-link');
         const viewCount = document.getElementById('view-count');
         const backgroundVideo = document.getElementById('video-bg');
+        const container = document.querySelector('.container');
+        const content = document.querySelector('.content');
 
         let isMuted = true; // Start as true, because audio is not playing yet. Icon is 'muted'.
+        let hasEntered = false;
 
         function updateAudioIcon() {
             if (isMuted) {
@@ -345,46 +379,15 @@
         }
 
         entryScreen.addEventListener('click', () => {
-            entryScreen.style.opacity = '0';
-            setTimeout(() => {
-                entryScreen.style.display = 'none';
-            }, 1000); // Match CSS transition
+            if (!hasEntered) {
+                entryScreen.style.opacity = '0';
+                setTimeout(() => {
+                    entryScreen.style.display = 'none';
+                    content.style.pointerEvents = 'auto'; // Make content interactive after entry
+                    hasEntered = true;
+                }, 1000); // Match CSS transition
 
-            isMuted = false; // We want to play audio now
-            audioElement.play().catch(error => {
-                console.error("Audio autoplay failed. User interaction might be needed for a different tab, or browser policy.", error);
-                isMuted = true; // If it fails, set state back to muted
-            });
-            updateAudioIcon(); // Update icon to reflect playing state (or failure)
-        });
-
-        audioControl.addEventListener('click', () => {
-            isMuted = !isMuted; // Toggle the muted state
-
-            if (isMuted) {
-                audioElement.pause();
-            } else {
+                isMuted = false; // We want to play audio now
                 audioElement.play().catch(error => {
-                        console.error("Audio play failed:", error);
-                        isMuted = true; // If play fails, revert to muted state
-                        audioElement.pause(); // Ensure it's paused if play failed
-                });
-            }
-            updateAudioIcon(); // Update the icon
-        });
-
-        discordLink.addEventListener('click', () => {
-            let currentCount = 0;
-            const storedCount = localStorage.getItem('viewCount');
-
-            if (storedCount) {
-                currentCount = parseInt(storedCount, 10);
-            } else {
-                // Remove commas and parse from the text content if no stored count
-                currentCount = parseInt(viewCount.textContent.replace(/,/g, ''), 10);
-            }
-
-            if (!isNaN(currentCount)) {
-                const newCount = currentCount + 1;
-                viewCount.textContent = newCount.toLocaleString(); // Format with commas for display
-                localStorage.setItem('viewCount', newCount.toString
+                    console.error("Audio autoplay failed. User interaction might be needed for a different tab, or browser policy.", error);
+                    isMuted = true;
