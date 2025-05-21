@@ -258,7 +258,7 @@
     </div>
 
     <div class="container">
-        <img id="video-bg" src="https://r2.guns.lol/767b91b6-25e6-4de1-a5e2-a1235504bc95.png" alt="background image" />
+        <img id="video-bg" src="https://r2.guns.lol/767b91b6-25e6-4de1-a5e2-a1235504bc95.png" alt="background image" onerror="this.onerror=null; this.src='fallback_background.png'"/>
         <div class="overlay"></div>
 
         <button class="audio-control" id="audio-control">
@@ -319,6 +319,7 @@
         const audioControl = document.getElementById('audio-control');
         const discordLink = document.getElementById('discord-link');
         const viewCount = document.getElementById('view-count');
+        const backgroundVideo = document.getElementById('video-bg');
 
         let isMuted = true; // Start as true, because audio is not playing yet. Icon is 'muted'.
 
@@ -364,9 +365,9 @@
                 audioElement.pause();
             } else {
                 audioElement.play().catch(error => {
-                     console.error("Audio play failed:", error);
-                     isMuted = true; // If play fails, revert to muted state
-                     audioElement.pause(); // Ensure it's paused if play failed
+                        console.error("Audio play failed:", error);
+                        isMuted = true; // If play fails, revert to muted state
+                        audioElement.pause(); // Ensure it's paused if play failed
                 });
             }
             updateAudioIcon(); // Update the icon
@@ -386,31 +387,4 @@
             if (!isNaN(currentCount)) {
                 const newCount = currentCount + 1;
                 viewCount.textContent = newCount.toLocaleString(); // Format with commas for display
-                localStorage.setItem('viewCount', newCount.toString()); // Store raw number
-            } else {
-                // Fallback if parsing failed (e.g. viewCount.textContent was not a number)
-                const fallbackCount = (parseInt(localStorage.getItem('viewCount'), 10) || 4392) + 1;
-                viewCount.textContent = fallbackCount.toLocaleString();
-                localStorage.setItem('viewCount', fallbackCount.toString());
-                console.warn("View count parsing failed, used fallback and incremented.");
-            }
-        });
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const storedCount = localStorage.getItem('viewCount');
-            if (storedCount) {
-                viewCount.textContent = parseInt(storedCount, 10).toLocaleString();
-            } else {
-                // If no stored count, ensure the initial HTML view count is formatted and store it
-                const initialCountText = viewCount.textContent.replace(/,/g, '');
-                const initialCount = parseInt(initialCountText, 10);
-                if (!isNaN(initialCount)) {
-                    viewCount.textContent = initialCount.toLocaleString();
-                    localStorage.setItem('viewCount', initialCount.toString()); // Initialize localStorage
-                }
-            }
-            // The initial icon is 'muted' by HTML, and isMuted is true, so no need to call updateAudioIcon() here.
-        });
-    </script>
-</body>
-</html>
+                localStorage.setItem('viewCount', newCount.toString
