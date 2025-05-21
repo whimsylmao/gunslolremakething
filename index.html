@@ -5,13 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>asteroidlord</title>
 <style>
-    /* Reset and base styles */
     * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
     }
-
     body {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         background-color: black;
@@ -20,9 +18,7 @@
         height: 100vh;
         width: 100vw;
     }
-
-    /* Entry screen */
-    #entry-screen {
+    #aUedjEIAuh {
         position: fixed;
         top: 0;
         left: 0;
@@ -37,22 +33,18 @@
         transition: opacity 1s ease-in-out;
         pointer-events: auto;
     }
-    #entry-screen .entry-text {
+    #aUedjEIAuh .aUedjEIAuh-text {
         font-size: 1.5rem;
         color: #ccc;
         pointer-events: auto;
     }
-
-    /* Main content */
-    .container {
+    .zzXzYpQr {
         position: relative;
         width: 100%;
         height: 100vh;
         overflow: hidden;
     }
-
-    /* Background image - updated URL */
-    #video-bg {
+    #kLuMaNop {
         position: absolute;
         top: 0;
         left: 0;
@@ -64,8 +56,7 @@
         z-index: 1;
         pointer-events: none;
     }
-
-    .overlay {
+    .bCdEfGh {
         position: absolute;
         top: 0;
         left: 0;
@@ -75,9 +66,7 @@
         z-index: 2;
         pointer-events: none;
     }
-
-    /* Content */
-    .content {
+    .mnopQRst {
         position: relative;
         z-index: 10;
         display: flex;
@@ -89,8 +78,7 @@
         text-align: center;
         pointer-events: none;
     }
-
-    .profile {
+    .uvwXYza {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -98,26 +86,22 @@
         max-width: 400px;
         pointer-events: auto;
     }
-
-    .profile > * {
+    .uvwXYza > * {
         pointer-events: auto;
     }
-
-    .profile-image-container {
+    .pQwErTy {
         position: relative;
         width: 96px;
         height: 96px;
     }
-
-    .profile-image {
+    .rStUvWx {
         width: 100%;
         height: 100%;
         border-radius: 50%;
         object-fit: cover;
         pointer-events: none;
     }
-
-    .profile-decoration {
+    .yZaXcVb {
         position: absolute;
         top: -16px;
         right: -16px;
@@ -126,46 +110,39 @@
         object-fit: contain;
         pointer-events: none;
     }
-
-    .uid {
+    .lMnOpQ {
         font-size: 0.875rem;
         color: #9ca3af;
         pointer-events: none;
     }
-
-    .username-container {
+    .rStUv {
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 0.5rem;
         pointer-events: none;
     }
-
-    .username {
+    .tYzWvX {
         font-size: 1.875rem;
         font-weight: 700;
         pointer-events: none;
     }
-
-    .diamond {
+    .aBcDeF {
         font-size: 1.5rem;
         color: #9ca3af;
         pointer-events: none;
     }
-
-    .badge {
+    .gHiJkL {
         height: 24px;
         pointer-events: none;
     }
-
-    .tagline {
+    .mNoPqR {
         font-size: 1.125rem;
         font-style: italic;
         letter-spacing: 0.05em;
         pointer-events: none;
     }
-
-    .tiktok {
+    .sTuVwX {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -174,43 +151,35 @@
         margin-top: 0.5rem;
         pointer-events: none;
     }
-
-    .tiktok > * {
+    .sTuVwX > * {
         pointer-events: none;
     }
-
-    .tiktok-image {
+    .iJkLmn {
         width: 24px;
         height: 24px;
         border-radius: 50%;
         object-fit: cover;
         pointer-events: none;
     }
-
-    .dot {
+    .zXcVbN {
         color: #ef4444;
         pointer-events: none;
     }
-
-    .shop {
+    .pQrStU {
         color: #9ca3af;
         pointer-events: none;
     }
-
-    /* Discord button */
-    .discord-button {
+    .discordBtn {
         margin-top: 1.5rem;
         position: relative;
         display: inline-block;
         transition: transform 0.3s ease;
         pointer-events: auto;
     }
-
-    .discord-button:hover {
+    .discordBtn:hover {
         transform: scale(1.1);
     }
-
-    .discord-icon {
+    .discordIcon {
         width: 48px;
         height: 48px;
         border-radius: 50%;
@@ -219,13 +188,10 @@
         transition: background-color 0.3s ease;
         pointer-events: none;
     }
-
-    .discord-button:hover .discord-icon {
+    .discordBtn:hover .discordIcon {
         background-color: rgba(255, 255, 255, 0.2);
     }
-
-    /* View counter */
-    .view-counter {
+    .viewCounter {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -235,18 +201,15 @@
         margin-top: 1rem;
         pointer-events: none;
     }
-
-    .view-counter > * {
+    .viewCounter > * {
         pointer-events: none;
     }
-
-    /* Audio control */
-    .audio-control {
+    .aUedjEIAuh {
         position: absolute;
         top: 1rem;
         right: 1rem;
         z-index: 20;
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: rgba(255,255,255,0.1);
         border: none;
         color: white;
         width: 40px;
@@ -259,109 +222,83 @@
         transition: background-color 0.3s ease;
         pointer-events: auto;
     }
-
-    .audio-control:hover {
-        background-color: rgba(255, 255, 255, 0.2);
+    .aUedjEIAuh:hover {
+        background-color: rgba(255,255,255,0.2);
     }
-
-    /* Animations */
     @keyframes fadeIn {
         from { opacity: 0; }
         to { opacity: 1; }
     }
-
     @keyframes float {
         0%, 100% { transform: translateY(0); }
         50% { transform: translateY(-5px); }
     }
-
-    .animate-float {
+    .fLoAt {
         animation: float 3s ease-in-out infinite;
     }
-
-    .fade-in {
+    .sFaDe {
         animation: fadeIn 1s ease-in-out forwards;
     }
 </style>
 </head>
 <body>
-    <!-- Entry overlay -->
-    <div id="entry-screen">
-        <div class="entry-text">click to enter...</div>
-    </div>
-
-    <!-- Main content -->
-    <div class="container">
-        <!-- Updated background image URL -->
-        <img id="video-bg" src="https://images.squarespace-cdn.com/content/v1/60ee2eaaafee646b28e6aa42/d800cf36-2f22-434f-ad3d-e6eb5ff6147d/NewForestStuff.jpg" alt="background image" onerror="this.onerror=null; this.src='fallback_background.png'"/>
-        <div class="overlay"></div>
-
-        <!-- Audio control button -->
-        <button class="audio-control" id="audio-control">
-            <!-- SVG icon will be dynamically inserted -->
-        </button>
-
-        <div class="content">
-            <div class="profile">
-                <div class="profile-image-container">
-                    <img src="https://r2.guns.lol/5408dec9-08b2-42f1-94cb-2a01ef3f6810.png" alt="pfp" class="profile-image" />
-                    <img src="https://cdn.discordapp.com/avatar-decoration-presets/a_db05e7fc49cb1a078f6aec1e559e2891.png?size=96&passthrough=false" alt="deco" class="profile-decoration" />
-                </div>
-
-                <p class="uid">UID: 286,873</p>
-
-                <div class="username-container">
-                    <h1 class="username">asteroidlord</h1>
-                    <span class="diamond">💎</span>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Roblox_Verification_Badge.svg/2048px-Roblox_Verification_Badge.svg.png" alt="verified badge" class="badge" />
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" alt="ts" class="badge" />
-                </div>
-
-                <p class="tagline">16 year old who loves what he does</p>
-
-                <div class="tiktok">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="insta" class="tiktok-image" />
-                    <span>defnotasteroid</span>
-                    <span class="dot">•</span>
-                    <span class="shop">discord.gg/projectnugget</span>
-                </div>
-
-                <a href="https://discord.gg/projectnugget" class="discord-button" id="discord-link" target="_blank" rel="noopener noreferrer">
-                    <img src="https://pngimg.com/d/discord_PNG16.png" alt="discord" class="discord-icon" />
-                </a>
-
-                <div class="view-counter">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                        <circle cx="12" cy="12" r="3"></circle>
-                    </svg>
-                    <span id="view-count">4,392</span>
-                </div>
+<div id="aUedjEIAuh">
+    <div class="aUedjEIAuh-text">click to enter...</div>
+</div>
+<div class="zzXzYpQr">
+    <img id="kLuMaNop" src="https://images.squarespace-cdn.com/content/v1/60ee2eaaafee646b28e6aa42/d800cf36-2f22-434f-ad3d-e6eb5ff6147d/NewForestStuff.jpg" alt="background image" onerror="this.onerror=null; this.src='fallback_background.png'"/>
+    <div class="bCdEfGh"></div>
+    <button class="aUedjEIAuh" id="xYzWqE">
+        <!-- SVG icon will be dynamically inserted -->
+    </button>
+    <div class="mnopQRst">
+        <div class="uvwXYza">
+            <div class="pQwErTy">
+                <img src="https://r2.guns.lol/5408dec9-08b2-42f1-94cb-2a01ef3f6810.png" alt="pfp" class="rStUvX" />
+                <img src="https://cdn.discordapp.com/avatar-decoration-presets/a_db05e7fc49cb1a078f6aec1e559e2891.png?size=96&passthrough=false" alt="deco" class="yZaXcVb" />
+            </div>
+            <p class="lMnOpQ">UID: 286,873</p>
+            <div class="rStUv">
+                <h1 class="tYzWvX">asteroidlord</h1>
+                <span class="aBcDeF">💎</span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Roblox_Verification_Badge.svg/2048px-Roblox_Verification_Badge.svg.png" alt="verified badge" class="gHiJkL" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" alt="ts" class="gHiJkL" />
+            </div>
+            <p class="mNoPqR">16 year old who loves what he does</p>
+            <div class="sTuVwX">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="insta" class="iJkLmn" />
+                <span>defnotasteroid</span>
+                <span class="zXcVbN">•</span>
+                <span class="pQrStU">discord.gg/projectnugget</span>
+            </div>
+            <a href="https://discord.gg/projectnugget" class="discordBtn" id="disXyZ" target="_blank" rel="noopener noreferrer">
+                <img src="https://pngimg.com/d/discord_PNG16.png" alt="discord" class="discordIcon" />
+            </a>
+            <div class="viewCounter">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                <span id="xYzVw">4,392</span>
             </div>
         </div>
     </div>
-
-    <!-- Background audio -->
-    <audio id="background-audio" loop>
-        <source src="https://github.com/whimsylmao/gunslolremakething/raw/refs/heads/main/cold%20sweats!.mp3" type="audio/mpeg" />
-    </audio>
-
+</div>
+<audio id="xYzAudio" loop>
+    <source src="https://github.com/whimsylmao/gunslolremakething/raw/refs/heads/main/cold%20sweats!.mp3" type="audio/mpeg" />
+</audio>
 <script>
-    const entryScreen = document.getElementById('entry-screen');
-    const audioElement = document.getElementById('background-audio');
-    const audioControl = document.getElementById('audio-control');
-    const viewCount = document.getElementById('view-count');
-    const backgroundVideo = document.getElementById('video-bg');
-    const content = document.querySelector('.content');
-
-    let isMuted = true; // Start muted; icon shows muted state
-    let hasEntered = false;
-
-    // Function to update the icon based on mute state
-    function updateAudioIcon() {
-        if (isMuted) {
-            // Muted icon
-            audioControl.innerHTML = `
+    const aUedj = document.getElementById('aUedjEIAuh');
+    const xYzAudio = document.getElementById('xYzAudio');
+    const xYzWq = document.getElementById('xYzWqE');
+    const xYzVwSpan = document.getElementById('xYzVw');
+    const bgImg = document.getElementById('kLuMaNop');
+    const cont = document.querySelector('.mnopQRst');
+    let uioPqWe = true;
+    let opAsDf = false;
+    function updateIcon() {
+        if (uioPqWe) {
+            xYzWq.innerHTML = `
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="1" y1="1" x2="23" y2="23"></line>
                     <path d="M9 9v3a3 3 0 0 0 5.12 2.12M15 9.34V4a3 3 0 0 0-5.94-.6"></path>
@@ -371,8 +308,7 @@
                 </svg>
             `;
         } else {
-            // Unmuted icon
-            audioControl.innerHTML = `
+            xYzWq.innerHTML = `
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
                     <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
@@ -380,40 +316,30 @@
             `;
         }
     }
-
-    // When user clicks the overlay
-    document.getElementById('entry-screen').addEventListener('click', () => {
-        console.log('Clicked on entry screen'); // Debugging
-        if (!hasEntered) {
-            // Animate hiding overlay
-            document.getElementById('entry-screen').style.opacity = '0';
+    aUedj.addEventListener('click', () => {
+        console.log('Clicked on entry screen');
+        if (!opAsDf) {
+            aUedj.style.opacity = '0';
             setTimeout(() => {
-                document.getElementById('entry-screen').style.display = 'none';
-                // Enable interactions
-                content.style.pointerEvents = 'auto';
-                hasEntered = true;
-            }, 1000); // Match CSS transition
-
-            // Play audio
-            isMuted = false;
-            updateAudioIcon();
-            audioElement.play().catch(error => {
-                console.error("Audio autoplay failed. User interaction might be needed.", error);
+                aUedj.style.display = 'none';
+                cont.style.pointerEvents = 'auto';
+                opAsDf = true;
+            }, 1000);
+            uioPqWe = false;
+            updateIcon();
+            xYzAudio.play().catch(error => {
+                console.error("Audio autoplay failed.", error);
             });
         }
     });
-
-    // Initialize icon
-    updateAudioIcon();
-
-    // Toggle mute/unmute on icon click
-    document.getElementById('audio-control').addEventListener('click', () => {
-        isMuted = !isMuted;
-        updateAudioIcon();
-        if (isMuted) {
-            audioElement.pause();
+    updateIcon();
+    xYzWq.addEventListener('click', () => {
+        uioPqWe = !uioPqWe;
+        updateIcon();
+        if (uioPqWe) {
+            xYzAudio.pause();
         } else {
-            audioElement.play().catch(error => console.error(error));
+            xYzAudio.play().catch(error => console.error(error));
         }
     });
 </script>
